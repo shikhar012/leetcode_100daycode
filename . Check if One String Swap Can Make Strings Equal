@@ -1,0 +1,40 @@
+ class Solution {
+public:
+    bool areAlmostEqual(string s1, string s2) {
+        int i=0,j=0;
+        unordered_map<char,int> m;
+   
+      if(s1.size()!=s2.size())
+      {
+        return false;
+      }
+   
+   for(i=0;i<s1.size();i++)
+   {
+    if(s1[i]!=s2[i])
+    {
+        j++;
+    }
+   }
+      for(auto mp:s1)
+      {
+        m[mp]++;
+      }
+      for(auto mp:s2)
+      {
+        m[mp]--;
+      }
+      for(auto p:m)
+      {
+        if(p.second>0)
+        {
+            return 0;
+        }
+      }
+    if(j==2 || j==0)
+    {
+        return 1;
+    }
+    return 0;
+    }
+};
