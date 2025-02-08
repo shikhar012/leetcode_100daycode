@@ -1,0 +1,84 @@
+#include <bits/stdc++.h> 
+/*
+
+	Following is the node structure
+	class ListNode{
+		public:
+		int data;
+		ListNode* next;
+	};
+
+	ListNode* newListNode(int data){
+		ListNode *temp = new ListNode;
+    		temp->data = data;
+    		temp->next = NULL;
+    		return temp;
+	}
+
+*/
+ListNode *findintersection(ListNode *slow, ListNode *fast )
+{
+ while(slow!=NULL && fast!=NULL)
+   {
+	   slow=slow->next;
+	   fast=fast->next;
+	   if(fast)
+	   {
+		    fast=fast->next;
+	   }
+	   if(slow!=NULL && fast!=NULL && slow==fast)
+	   {
+		   
+		 
+		   return slow ;
+	   }
+   
+   }
+   
+	   return NULL;
+    
+}
+
+ListNode *find_starting_point(ListNode *s,ListNode *intr,int &x)
+{
+	while(s!=intr)
+	{
+		x++;
+		s=s->next;
+		intr=intr->next;
+	}
+	// cout<<s->data<<":";
+	return intr;
+}
+
+ListNode *findNode(ListNode *head, int n){
+	ListNode* slow = head;
+	ListNode* fast = head;
+    ListNode* s = head;
+    int x=0;
+	ListNode *intersection=findintersection(slow,fast );
+
+     slow = find_starting_point(s,intersection,x);
+
+	 x=x-n;
+   //cout<<x<<"::";
+    if(x<0)
+	{
+		return NULL;
+	}
+	s=head;
+   while(x)
+   {
+	   x--;
+	    
+	   s=s->next;
+   }     
+
+
+return s;
+     
+
+   
+
+
+}
