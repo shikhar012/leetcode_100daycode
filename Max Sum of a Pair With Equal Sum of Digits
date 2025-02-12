@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int maximumSum(vector<int>& nums) {
+        map<int,priority_queue<int>> m;
+        for(int i=0;i<nums.size();i++)
+        {
+            int k=nums[i],r=0;
+                while(k){
+                    r+=k%10;
+                    k=k/10;
+                }
+                m[r].push(nums[i]);
+        }
+        int ans=0,c=0;
+       for(auto it:m)
+       {
+        auto q=it.second;
+       // cnt=0;
+        int sum=0,cnt=0;
+        if(q.size()>1)
+        {
+             c++;
+        }
+        if(q.size()>1)
+        {
+        while(q.size()&&cnt<2) 
+        {
+            
+            sum+=q.top();
+            q.pop();
+            cnt++;
+
+       } 
+        }
+       cout<<endl;
+      
+    ans=max(ans,sum);
+    
+    }
+    if(!c)
+    {
+        return -1;
+    }
+    return ans;
+    }
+};
