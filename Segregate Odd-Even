@@ -1,0 +1,57 @@
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+Node * segregateOddEven (Node * head)
+{
+   vector<int> v;
+   Node *temp=head;
+   if(!temp || !temp->next)
+   {
+	   return head; 
+   }
+   while(temp!=NULL)
+   {
+	   if(temp->data%2!=0)
+	   {
+		   v.push_back(temp->data);
+
+	   }
+	   temp=temp->next;
+   }
+  temp=head;
+ while(temp!=NULL)
+   {
+	   if(temp->data%2==0)
+	   {
+		   v.push_back(temp->data);
+
+	   }
+	   temp=temp->next;
+   }
+
+     int i=0;
+temp=head;
+       while(temp)
+	   {
+		   temp->data=v[i];
+		   i++;
+		   temp=temp->next;
+	   }
+return head;
+
+}
