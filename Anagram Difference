@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+int getMinimumAnagramDifference(string &str1, string &str2) {
+   map<char,int> s1;
+     for(int i=0;i<str1.size();i++)
+     {
+         s1[str1[i]]++;
+     }
+     int cnt=0;
+     for(int i=0;i<str2.size();i++)
+     {
+         if(s1.find(str2[i])==s1.end())
+         {
+          cnt++;   
+         }
+         else{
+             s1[str2[i]]--;
+             if(s1[str2[i]]==0)
+             {
+             s1.erase(str2[i]);
+         }}
+     }
+     return cnt;
+}
