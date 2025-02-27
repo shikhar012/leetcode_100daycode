@@ -1,0 +1,50 @@
+#include <bits/stdc++.h> 
+bool ninjaShikanji(vector<int> bill, int n) {
+    int cnt=0;
+     int five=0,ten=0,tew=0;
+	 for(int i=0;i<n;i++)
+	 {
+		 int change = bill[i]-5;
+		 if(change==0)
+		 {
+			 cnt+=5;
+			 five++;
+			 
+		 }
+		 else if(cnt>=change)
+		 {
+			
+			 if(change==5 && five)
+			 {
+				 five--;
+			     ten++;
+			 }
+			 else if(change==15 && five ){
+				 if(!ten)
+				 {
+                   if(five*5!=change){
+                         return false;
+				   }
+				   else{
+				         five-=change/5;	   
+				   }
+				 }
+				 else{
+				 five--;
+				 ten--;
+				 }
+				 tew++;
+			 }
+			 else{
+				 return false;
+			 }
+			 cnt-=change;
+			 cnt+=bill[i];
+
+		 }
+		 else{
+			 return false;
+		 }
+	 }
+	 return true;
+}
