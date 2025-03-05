@@ -1,0 +1,46 @@
+  string reverseWords(string &s) {
+     
+       stack<char> st;
+       int n=s.size();
+       int i=0;
+       string ans="";
+       while(i<n){
+           if(s[i]!=' '){
+               st.push(s[i]);
+           }
+        
+           if(s[i]==' ' && st.size()){
+               while(st.size())
+               {
+               ans+=st.top();
+               st.pop();
+              }
+              
+             ans+=' ';
+              
+           }
+             
+           
+           i++;
+       }
+       while(st.size()){
+           ans+=st.top();
+           st.pop();
+       }
+       int a=ans.size();
+            //cout<<ans[n-1]<<endl;
+      if(ans[ans.size()-1]==' '){
+      string k;
+          for(int i=0;i<a-1;i++){
+             
+              k.push_back(ans[i]);
+              
+                 
+              }
+          return k;
+      }
+      
+ 
+    return ans;
+        
+    }
