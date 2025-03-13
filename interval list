@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+vector<vector<int>> intersectionIntervals(vector<vector<int>>& interval1, vector<vector<int>>& interval2, int n1, int n2)
+{ 
+    vector<vector<int>> ans;
+    int i=0,j=0;
+     
+   while(i<interval1.size() && j<interval2.size()){
+
+
+       if(interval2[j][0]>interval1[i][1]){
+           i++;
+       }
+       else if(interval2[j][1]<interval1[i][0]){
+           j++;
+       }
+           else{
+               vector<int> v;
+             int a= max(interval1[i][0],interval2[j][0]);
+             int b=min(interval1[i][1],interval2[j][1]);
+              v.push_back(a);
+             v.push_back(b);
+             ans.push_back(v);
+
+             if(interval1[i][1]<interval2[j][1]){
+                 i++;
+             }
+             else{
+                 j++;
+             }
+           }
+
+        }
+    
+    return ans;
+}
